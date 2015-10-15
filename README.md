@@ -1,3 +1,3 @@
-Java
-MySQL
-Jetty como Servlet Container
+* Java
+* MySQL
+* Jetty como Servlet Container
