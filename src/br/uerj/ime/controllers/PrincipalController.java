@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class FuncionarioController {
+public class PrincipalController {
 
-    @RequestMapping("/olaMundoSpring")
+    @RequestMapping("/")
     public String execute() {
-        return "ok";
+        return "index";
     }
 }
