@@ -13,7 +13,8 @@
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="bia" password="123456" authorities="ROLE_USER,ROLE_WORKER" />
+                <user name="gerente" password="123456" authorities="ROLE_USER,ROLE_WORKER,ROLE_MANAGER" />
+                <user name="funcionario" password="123456" authorities="ROLE_USER,ROLE_WORKER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>

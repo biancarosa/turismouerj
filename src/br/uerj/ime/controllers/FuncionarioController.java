@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class FuncionarioController {
 
-    @RequestMapping("/olaMundoSpring")
-    public String execute() {
-        return "ok";
+    @RequestMapping("/funcionario/criar")
+    public String criar() {
+        return "funcionario/criar";
     }
 }
