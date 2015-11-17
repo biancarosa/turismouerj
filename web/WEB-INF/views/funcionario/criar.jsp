@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
   <title></title>
@@ -7,7 +8,7 @@
 <body>
 <jsp:include page="../menu.jsp" />
 <div class="container">
-  <form action="/funcionario/criar" method="post">
+  <form:form action="/funcionario/salvar" method="post">
       <input type="hidden" name="criar" value="true" />
       <div class="col-sm-12">
           <h2>Dados pessoais</h2>
@@ -53,7 +54,7 @@
           </div>
           <button type="submit" class="btn btn-default pull-right">Criar</div>
       </div>
-  </form>
+  </form:form>
 </div>
 <jsp:include page="../footer.jsp" />
 </body>

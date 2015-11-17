@@ -1,14 +1,10 @@
 package br.uerj.ime.interno;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Gerente {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Gerente extends Funcionario {
 
-    @Id
-    @GeneratedValue
-    private Long codigo;
 
 }

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/turismouerj</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+        <!-- DB schema will be updated if needed -->
+        <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.current_session_context_class">
+            org.hibernate.context.internal.ThreadLocalSessionContext
+        </property>
+
+        <mapping class="br.uerj.ime.interno.Funcionario"/>
+        <mapping class="br.uerj.ime.interno.Gerente"/>
+        <mapping class="br.uerj.ime.dados.Telefone"/>
+        <mapping class="br.uerj.ime.dados.Endereco"/>
+
+    </session-factory>
+</hibernate-configuration>
