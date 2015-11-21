@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
   <title></title>
@@ -8,7 +10,7 @@
 <body>
 <jsp:include page="../menu.jsp" />
 <div class="container">
-  <form:form action="/pacote/salvar" method="post" modelAttribute="pacote">
+  <form:form action="/pacote/salvar-${tipo}" method="post" modelAttribute="pacote">
       <div class="col-sm-12">
           <h2>Dados do pacote</h2>
           <div class="row">
@@ -45,6 +47,23 @@
                   <form:input type="date" class="form-control" id="dataVoltaViagem" path="dataVoltaViagem" placeholder="Data de volta" />
               </div>
           </div>
+          <c:if test='${tipo.equals("aereo")}'>
+              <div class="row">
+                  <div class="form-group col-sm-4">
+                      <label for="nome">Classe</label>
+                      <form:input type="text" class="form-control" id="classe" path="classe" placeholder="Classe" />
+                  </div>
+              </div>
+          </c:if>
+          <c:if test='${tipo.equals("rodoviario")}'>
+              <div class="row">
+                  <div class="form-group col-sm-4">
+                      <label for="nome">Tipo de ônibus</label>
+                      <form:input type="text" class="form-control" id="tipoOnibus" path="tipoOnibus" placeholder="TIpo de ônibus" />
+                  </div>
+              </div>
+          </c:if>
+          <button type="submit" class="btn btn-default pull-right">Criar</div>
       </div>
   </form:form>
 </div>

@@ -42,7 +42,7 @@ public abstract class Pacote {
     }
 
     public Integer getPermanencia() {
-        return permanencia;
+        return permanencia;                                                         
     }
 
     public void setPermanencia(Integer permanencia) {

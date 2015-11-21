@@ -20,17 +20,33 @@ public class PacoteController {
     @RequestMapping(value = "/pacote/criar", method = RequestMethod.GET)
     public String criar(@RequestParam("tipo") String tipo, Model model) {
         Pacote pacote;
-        if (tipo.equals("Aereo")) {
+        if (tipo.equals("aereo")) {
             pacote = new PacoteAereo();
         } else {
             pacote = new PacoteRodoviario();
         }
+        model.addAttribute("tipo", tipo);
         model.addAttribute("pacote", pacote);
         return "pacote/criar";
     }
 
-    @RequestMapping(value = "/pacote/salvar", method = RequestMethod.POST)
-    public String salvar(Pacote pacote, Model model) {
+    @RequestMapping(value = "/pacote/salvar-aereo", method = RequestMethod.POST)
+    public String salvar(PacoteAereo pacote, Model model) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            session.save(pacote);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        return "redirect:/pacote/listar";
+    }
+
+    @RequestMapping(value = "/pacote/salvar-rodoviario", method = RequestMethod.POST)
+    public String salvar(PacoteRodoviario pacote, Model model) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         try {
