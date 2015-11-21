@@ -20,6 +20,8 @@
         <mapping class="br.uerj.ime.interno.Gerente"/>
         <mapping class="br.uerj.ime.dados.Telefone"/>
         <mapping class="br.uerj.ime.dados.Endereco"/>
+        <mapping class="br.uerj.ime.seguranca.Usuario"/>
+        <mapping class="br.uerj.ime.seguranca.Permissao"/>
 
     </session-factory>
 </hibernate-configuration>

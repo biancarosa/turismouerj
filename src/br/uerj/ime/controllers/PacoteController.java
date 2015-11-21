@@ -1,66 +1,54 @@
 package br.uerj.ime.controllers;
 
-import br.uerj.ime.dados.Endereco;
 import br.uerj.ime.interno.Funcionario;
+import br.uerj.ime.produtos.Pacote;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller
-public class FuncionarioController {
+import java.util.List;
 
-    @RequestMapping("/funcionario/criar")
+@Controller
+public class PacoteController {
+
+    @RequestMapping(value = "/pacote/criar", method = RequestMethod.GET)
     public String criar(Model model) {
-        Funcionario funcionario = new Funcionario();
-        model.addAttribute("funcionario", funcionario);
-        return "funcionario/criar";
+        Pacote funcionario = new Pacote();
+        model.addAttribute("pacote", pacote);
+        return "pacote/criar";
     }
 
-    @RequestMapping(value = "/funcionario/salvar", method = RequestMethod.POST)
-    public String salvar(Funcionario funcionario, Model model) {
-        System.out.println("Hi");
-        System.out.println(funcionario.getNome());
+    @RequestMapping(value = "/pacote/salvar", method = RequestMethod.POST)
+    public String salvar(Pacote pacote, Model model) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         try {
             session.beginTransaction();
-            session.save(funcionario);
+            session.save(pacote);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
         }
-        System.out.println("Look");
-        Long codigo = funcionario.getCodigo();
-        return "redirect:/funcionario/visualizar?id="+codigo.toString();
+        return "redirect:/pacote/listar";
     }
 
-
-
-    @RequestMapping(value = "/funcionario/visualizar", method = RequestMethod.GET)
-    public String visualizar(@RequestParam("id") Long id, Model model) {
-        System.out.println(id);
-
+    @RequestMapping(value = "/pacote/listar", method = RequestMethod.GET)
+    public String listar(Model model) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
-        Funcionario funcionario;
         try {
             session.beginTransaction();
-            funcionario = session.get(Funcionario.class, id);
-            model.addAttribute("funcionario", funcionario);
+            List<Pacote> pacotes = session.createCriteria(Pacote.class).list();
+            model.addAttribute("pacotes", pacotes);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return "funcionario/visualizar";
+        return "pacote/lista";
     }
-
-
 }

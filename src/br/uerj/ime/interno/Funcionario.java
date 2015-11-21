@@ -2,17 +2,14 @@ package br.uerj.ime.interno;
 
 import br.uerj.ime.dados.Endereco;
 import br.uerj.ime.dados.Telefone;
+import br.uerj.ime.seguranca.Usuario;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Funcionario {
-
-    @Id
-    @GeneratedValue
-    private Long codigo;
+public class Funcionario extends Usuario {
 
     private String nome;
 
@@ -20,7 +17,7 @@ public class Funcionario {
 
     private Integer numeroVendas;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
     @OneToMany
@@ -75,5 +72,9 @@ public class Funcionario {
 
     public void setGerente(Gerente gerente) {
         this.gerente = gerente;
+    }
+
+    public Funcionario() {
+        this.endereco = new Endereco();
     }
 }
