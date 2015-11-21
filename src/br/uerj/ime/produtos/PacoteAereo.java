@@ -9,4 +9,12 @@ import javax.persistence.InheritanceType;
 public class PacoteAereo extends Pacote {
 
     private String classe;
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
 }

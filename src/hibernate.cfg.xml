@@ -22,6 +22,9 @@
         <mapping class="br.uerj.ime.dados.Endereco"/>
         <mapping class="br.uerj.ime.seguranca.Usuario"/>
         <mapping class="br.uerj.ime.seguranca.Permissao"/>
+        <mapping class="br.uerj.ime.produtos.Pacote"/>
+        <mapping class="br.uerj.ime.produtos.PacoteAereo"/>
+        <mapping class="br.uerj.ime.produtos.PacoteRodoviario"/>
 
     </session-factory>
 </hibernate-configuration>

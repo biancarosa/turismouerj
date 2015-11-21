@@ -1,7 +1,8 @@
 package br.uerj.ime.controllers;
 
-import br.uerj.ime.interno.Funcionario;
 import br.uerj.ime.produtos.Pacote;
+import br.uerj.ime.produtos.PacoteAereo;
+import br.uerj.ime.produtos.PacoteRodoviario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,8 +18,13 @@ import java.util.List;
 public class PacoteController {
 
     @RequestMapping(value = "/pacote/criar", method = RequestMethod.GET)
-    public String criar(Model model) {
-        Pacote funcionario = new Pacote();
+    public String criar(@RequestParam("tipo") String tipo, Model model) {
+        Pacote pacote;
+        if (tipo.equals("Aereo")) {
+            pacote = new PacoteAereo();
+        } else {
+            pacote = new PacoteRodoviario();
+        }
         model.addAttribute("pacote", pacote);
         return "pacote/criar";
     }

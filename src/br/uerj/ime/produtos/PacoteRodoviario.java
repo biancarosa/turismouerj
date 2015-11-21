@@ -9,4 +9,12 @@ import javax.persistence.InheritanceType;
 public class PacoteRodoviario extends Pacote {
 
     private String tipoOnibus;
+
+    public String getTipoOnibus() {
+        return tipoOnibus;
+    }
+
+    public void setTipoOnibus(String tipoOnibus) {
+        this.tipoOnibus = tipoOnibus;
+    }
 }

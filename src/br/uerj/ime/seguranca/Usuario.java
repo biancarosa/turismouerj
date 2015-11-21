@@ -3,9 +3,8 @@ package br.uerj.ime.seguranca;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Usuario {
+@MappedSuperclass
+public abstract class Usuario {
 
     @Id
     @GeneratedValue
