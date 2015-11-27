@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Pacote {
+public class Pacote {
 
     @Id
     @GeneratedValue

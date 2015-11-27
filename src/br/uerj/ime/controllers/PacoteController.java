@@ -3,6 +3,8 @@ package br.uerj.ime.controllers;
 import br.uerj.ime.produtos.Pacote;
 import br.uerj.ime.produtos.PacoteAereo;
 import br.uerj.ime.produtos.PacoteRodoviario;
+import br.uerj.ime.receita.Venda;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -73,4 +75,25 @@ public class PacoteController {
         }
         return "pacote/lista";
     }
+
+
+    @RequestMapping(value = "/pacote/remover")
+    public String remover(@RequestParam("pacoteId") Long pacoteId, Model model) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            Pacote pacote = session.get(Pacote.class, pacoteId);
+            Long quantidade = (Long) session.createQuery("select count(*) from Venda venda where venda.pacote = :pacote").setParameter("pacote", pacote).uniqueResult();
+            if (quantidade == 0) { // nao deleta pacotes vendidos
+                session.delete(pacote);
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        return "redirect:/pacote/listar";
+    }
+
 }

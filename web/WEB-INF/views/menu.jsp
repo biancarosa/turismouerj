@@ -26,6 +26,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/pacote/criar?tipo=aereo">Criar pacote a&eacute;reo</a></li>
                         <li><a href="/pacote/criar?tipo=rodoviario">Criar pacote rodovi&aacute;rio</a></li>
+                        <li><a href="/pacote/listar">Listar</a></li>
                     </ul>
                 </li>
             </ul>

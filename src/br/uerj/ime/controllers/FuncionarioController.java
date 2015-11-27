@@ -46,8 +46,6 @@ public class FuncionarioController {
 
     @RequestMapping(value = "/funcionario/visualizar", method = RequestMethod.GET)
     public String visualizar(@RequestParam("id") Long id, Model model) {
-        System.out.println(id);
-
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         Funcionario funcionario;

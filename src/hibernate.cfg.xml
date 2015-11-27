@@ -25,6 +25,8 @@
         <mapping class="br.uerj.ime.produtos.Pacote"/>
         <mapping class="br.uerj.ime.produtos.PacoteAereo"/>
         <mapping class="br.uerj.ime.produtos.PacoteRodoviario"/>
+        <mapping class="br.uerj.ime.receita.Venda"/>
+        <mapping class="br.uerj.ime.clientes.Cliente"/>
 
     </session-factory>
 </hibernate-configuration>

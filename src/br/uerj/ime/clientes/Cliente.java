@@ -3,10 +3,7 @@ package br.uerj.ime.clientes;
 import br.uerj.ime.dados.Endereco;
 import br.uerj.ime.dados.Telefone;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -20,7 +17,38 @@ public class Cliente {
     @OneToMany
     private Set<Telefone> telefone;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Set<Telefone> getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Set<Telefone> telefone) {
+        this.telefone = telefone;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }
