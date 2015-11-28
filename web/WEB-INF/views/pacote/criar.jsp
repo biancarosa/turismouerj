@@ -33,18 +33,18 @@
                   <form:input type="number" class="form-control" id="valorPorPessoa" path="valorPorPessoa" placeholder="Valor por pessa" />
               </div>
               <div class="form-group col-sm-3">
-                  <label for="nome">Permanencia</label>
+                  <label for="permanencia">Permanencia</label>
                   <form:input type="number" class="form-control" id="permanencia" path="permanencia" placeholder="Permanencia" />
               </div>
           </div>
           <div class="row">
               <div class="form-group col-sm-4">
-                  <label for="nome">Data de Ida</label>
-                  <form:input type="date" class="form-control" id="dataIdaViagem" path="dataIdaViagem" placeholder="Data de volta" />
+                  <label for="dataIdaViagem">Data de Ida</label>
+                  <form:input type="datetime-local " class="form-control" id="dataIdaViagem" path="dataIdaViagem" placeholder="Data de volta" />
               </div>
               <div class="form-group col-sm-4">
-                  <label for="nome">Data de Volta</label>
-                  <form:input type="date" class="form-control" id="dataVoltaViagem" path="dataVoltaViagem" placeholder="Data de volta" />
+                  <label for="dataVoltaViagem">Data de Volta</label>
+                  <form:input type="datetime-local " class="form-control" id="dataVoltaViagem" path="dataVoltaViagem" placeholder="Data de volta" />
               </div>
           </div>
           <c:if test='${tipo.equals("aereo")}'>

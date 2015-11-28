@@ -54,7 +54,27 @@
             </div>
         </div>
     </div>
-    <form:input type="hidden" class="form-control" id="pacoteid" path="pacote.codigo" value="${venda.getPacote().getCodigo()}" />
+        <h2>Dados da venda</h2>
+        <div class="col-sm-12">
+            <h3>Dados dos passageiros</h3>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label for="quantidadePessoas">Quantidade de passageiros</label>
+                    <form:input type="number" class="form-control" id="quantidadePessoas" path="quantidadePessoas" placeholder="Qtd de passageiros" />
+                </div>
+            </div>
+            <h3>Dados de pagamento</h3>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label for="tipoPagamento">Tipo de pagamento</label>
+                    <select name="tipoPagamento" id="tipoPagamento" class="form-control">
+                        <option value="CARTAOCREDITO">Cartão de crédito</option>
+                        <option value="AVISTA">À vista</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <form:input type="hidden" class="form-control" id="pacoteid" path="pacote.codigo" value="${venda.getPacote().getCodigo()}" />
     <button type="submit" class="btn btn-default pull-right">Criar</div>
 </div>
 </form:form>

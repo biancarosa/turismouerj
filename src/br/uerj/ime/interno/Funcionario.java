@@ -20,7 +20,7 @@ public class Funcionario extends Usuario {
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Telefone> telefone;
 
     @ManyToOne
@@ -76,5 +76,11 @@ public class Funcionario extends Usuario {
 
     public Funcionario() {
         this.endereco = new Endereco();
+    }
+
+
+    @Override
+    public String toString() {
+        return this.getNome();
     }
 }

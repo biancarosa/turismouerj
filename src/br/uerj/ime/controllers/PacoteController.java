@@ -68,7 +68,7 @@ public class PacoteController {
         Session session = sessionFactory.getCurrentSession();
         try {
             session.beginTransaction();
-            List<Pacote> pacotes = session.createCriteria(Pacote.class).list();
+            List pacotes = session.createQuery("from Pacote").list();
             model.addAttribute("pacotes", pacotes);
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,10 +83,9 @@ public class PacoteController {
         Session session = sessionFactory.getCurrentSession();
         try {
             session.beginTransaction();
-            Pacote pacote = session.get(Pacote.class, pacoteId);
-            Long quantidade = (Long) session.createQuery("select count(*) from Venda venda where venda.pacote = :pacote").setParameter("pacote", pacote).uniqueResult();
+            Long quantidade = (Long) session.createQuery("select count(*) from Venda venda where venda.pacote.id = :pacoteId").setParameter("pacoteId", pacoteId).uniqueResult();
             if (quantidade == 0) { // nao deleta pacotes vendidos
-                session.delete(pacote);
+                 session.createQuery("delete from Pacote where id = :pacoteId").setParameter("pacoteId", pacoteId).executeUpdate();
             }
             session.getTransaction().commit();
         } catch (Exception e) {
